@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/icon.min.css">
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+  <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 
 <body>
@@ -18,20 +18,24 @@
     <h1>Entrar</h1>
     <p>Acesse sua conta</p>
 
-    <div class="input-container">
-      <i class="icon ion-md-mail"></i>
-      <input type="email" id="email" placeholder="Email">
-    </div>
+    {% if mensagem %}
+    <p style="color: white; text-align: center;">{{ mensagem }}</p>
+    {% endif %}
 
-    <div class="input-container">
-      <i class="icon ion-md-lock"></i>
-      <input type="password" id="senha" placeholder="Senha">
-    </div>
+    <form method="POST">
+      {% csrf_token %}
 
-    <button>
-      <i class="icon ion-md-log-in"></i>
-      Entrar
-    </button>
+      <div class="input-container">
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+
+      <div class="input-container">
+        <input type="password" name="password" placeholder="Senha" required>
+      </div>
+
+      <button type="submit">Entrar</button>
+
+    </form>
 
     <div class="register-link">
       <a href="{% url 'cadastro' %}">Cadastrar</a>

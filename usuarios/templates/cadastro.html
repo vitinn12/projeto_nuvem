@@ -3,47 +3,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Criar Conta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/icon.min.css">
+    <meta charset="UTF-8">
+    <title>Criar Conta</title>
     <link rel="stylesheet" href="{% static 'cadastro.css' %}">
-</head>
+    </head>
 <body>
 
-  <div class="container">
-    <h1>Criar Conta</h1>
+    <div class="container">
+        <h1>Criar Conta</h1>
 
-    <div class="input-container">
-      <i class="icon ion-md-person"></i>
-      <input type="text" id="nome" placeholder="Nome completo">
+        {% if mensagem %}
+            <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; text-align: center;">
+                {{ mensagem }}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %} <div class="input-container">
+                <input type="text" name="first_name" placeholder="Seu nome" required> [cite: 21]
+            </div>
+
+            <div class="input-container">
+                <input type="text" name="last_name" placeholder="Seu sobrenome" required> [cite: 22]
+            </div>
+
+            <div class="input-container">
+                <input type="email" name="email" placeholder="Email" required> [cite: 19]
+            </div>
+
+            <div class="input-container">
+                <input type="password" name="password" placeholder="Senha" required> [cite: 20]
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'index' %}">Pagina Inicial</a>
+        </div>
     </div>
-
-    <div class="input-container">
-      <i class="icon ion-md-mail"></i>
-      <input type="email" id="email" placeholder="E-mail">
-    </div>
-
-    <div class="input-container">
-      <i class="icon ion-md-lock"></i>
-      <input type="password" id="senha" placeholder="Senha">
-    </div>
-
-    <div class="input-container">
-      <i class="icon ion-md-lock"></i>
-      <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
-    </div>
-
-    <button>
-      <i class="icon ion-md-person-add"></i>
-      Cadastrar
-    </button>
-
-    <div class="login-link">
-      <a href="{% url 'login' %}">Login</a>
-      <a href="{% url 'index' %}">Pagina Inicial</a>
-    </div>
-  </div>
 
 </body>
 </html>
