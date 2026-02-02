@@ -18,8 +18,12 @@
     <h1>Entrar</h1>
     <p>Acesse sua conta</p>
 
-    {% if mensagem %}
-      <p class="mensagem">{{ mensagem }}</p>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alerta-sucesso {{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
     {% endif %}
 
     <form method="POST">

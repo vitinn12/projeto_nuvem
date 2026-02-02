@@ -19,22 +19,28 @@
         {% endif %}
 
         <form method="POST">
-            {% csrf_token %} <div class="input-container">
-                <input type="text" name="first_name" placeholder="Seu nome" required> [cite: 21]
-            </div>
-
+            {% csrf_token %}
+            
             <div class="input-container">
-                <input type="text" name="last_name" placeholder="Seu sobrenome" required> [cite: 22]
+                <input type="text" name="username" placeholder="Nome de usuário (Login)" required>
             </div>
-
+        
             <div class="input-container">
-                <input type="email" name="email" placeholder="Email" required> [cite: 19]
+                <input type="text" name="first_name" placeholder="Seu nome" required>
             </div>
-
+        
             <div class="input-container">
-                <input type="password" name="password" placeholder="Senha" required> [cite: 20]
+                <input type="text" name="last_name" placeholder="Seu sobrenome" required>
             </div>
-
+        
+            <div class="input-container">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+        
+            <div class="input-container">
+                <input type="password" name="password" placeholder="Senha" required>
+            </div>
+        
             <button type="submit">Cadastrar</button>
         </form>
 
