@@ -13,7 +13,7 @@
     <header>
         {% if request.session.access_token %}
         {% if meu_id %}
-        <a href="{% url 'detalhar_usuario_api' meu_id %}">Meu Perfil</a>
+        <a href="{% url 'detalhar_usuario' meu_id %}">Meu Perfil</a>
         {% else %}
         {% endif %}
         <a href="{% url 'logout' %}" class="btn-sair">Sair</a>

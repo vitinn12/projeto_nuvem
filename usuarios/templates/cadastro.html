@@ -2,45 +2,46 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Criar Conta</title>
     <link rel="stylesheet" href="{% static 'cadastro.css' %}">
-    </head>
+</head>
+
 <body>
 
     <div class="container">
         <h1>Criar Conta</h1>
 
-        {% if mensagem %}
-            <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; text-align: center;">
-                {{ mensagem }}
-            </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div
+            style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; text-align: center;">
+            {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
 
         <form method="POST">
             {% csrf_token %}
-            
-            <div class="input-container">
-                <input type="text" name="username" placeholder="Nome de usuário (Login)" required>
-            </div>
-        
+
             <div class="input-container">
                 <input type="text" name="first_name" placeholder="Seu nome" required>
             </div>
-        
+
             <div class="input-container">
                 <input type="text" name="last_name" placeholder="Seu sobrenome" required>
             </div>
-        
+
             <div class="input-container">
                 <input type="email" name="email" placeholder="Email" required>
             </div>
-        
+
             <div class="input-container">
                 <input type="password" name="password" placeholder="Senha" required>
             </div>
-        
+
             <button type="submit">Cadastrar</button>
         </form>
 
@@ -51,4 +52,5 @@
     </div>
 
 </body>
+
 </html>

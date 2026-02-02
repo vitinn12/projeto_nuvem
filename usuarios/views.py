@@ -34,14 +34,15 @@ def index(request):
 
 def cadastro(request):
     if request.method == "POST":
+        email = request.POST.get('email')
         payload = {
-            "username": request.POST.get('username'),
-            "email": request.POST.get('email'),
+            "username": email,
+            "email": email,
             "password": request.POST.get('password'),
             "first_name": request.POST.get('first_name'),
             "last_name": request.POST.get('last_name')
         }
-        url = "https://usuarioapi-production.up.railway.app/api/registro/"
+        url = "https://usuarioapi-production.up.railway.app/api/registro/" #
         
         try:
             response = requests.post(url, json=payload)
