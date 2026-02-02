@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" href="{% static 'editar_usuario_api.css' %}">
+</head>
+
+<body>
+    <div class="card">
+        <h2>Editar Usuário</h2>
+        
+        {% if erro %}
+            <p style="color: #e74c3c; font-weight: bold;">{{ erro }}</p>
+        {% endif %}
+
+        <form method="POST" class="form-edicao">
+            {% csrf_token %}
+            
+            <div class="campo">
+                <label>Username:</label>
+                <input type="text" name="username" value="{{ usuario.username }}" required>
+            </div>
+
+            <div class="campo">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{ usuario.email }}" required>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                <a href="{% url 'detalhar_usuario_api' usuario.id %}" class="btn-cancelar">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

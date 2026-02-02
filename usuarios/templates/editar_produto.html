@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="{% static 'detalhes.css' %}">
+    <style>
+        .card { height: auto; min-height: 400px; padding: 30px; width: 500px; }
+        .form-edicao { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .campo { text-align: start; display: flex; flex-direction: column; gap: 5px; width: 100%; }
+        .campo label { font-weight: bold; color: #333; }
+        .campo input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+        .btn-salvar { 
+            padding: 10px; background-color: #15803d; color: white; 
+            border: none; border-radius: 5px; font-weight: bold; cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Editar Produto</h2>
+        
+        <form method="POST" class="form-edicao">
+            {% csrf_token %}
+            <div class="campo">
+                <label>Nome do Produto:</label>
+                <input type="text" name="nome" value="{{ produto.nome }}" required>
+            </div>
+
+            <div class="campo">
+                <label>Categoria:</label>
+                <input type="text" name="categoria" value="{{ produto.categoria }}" required>
+            </div>
+
+            <div class="campo">
+                <label>Preço:</label>
+                <input type="number" name="preco" step="0.01" value="{{ produto.preco|stringformat:'.2f' }}" required>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                <a href="{% url 'index' %}" style="background-color: #6b7280;">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

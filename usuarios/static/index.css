@@ -1,43 +1,128 @@
 body {
     background-color: #15803d;
-    /* Fundo verde */
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
-section {
+session {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     gap: 30px;
     align-items: center;
+    height: 800px;
+    line-height: 1;
+}
+session .texto h1,
+session .texto p {
+    color: white;
+    font-weight: 600;
 }
 
-a {
-    background-color: #ffffff;
-    /* Fundo branco */
+header a {
+    background-color: #15803d;
     color: #15803d;
-    /* Texto verde */
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
-    width: 300px;
-    height: 150px;
+    width: 150px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
 }
 
 a:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    text-decoration: underline;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgb(243, 243, 243);
+    gap: 20px;
+    height: auto;
+}
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.btn-sair {
+    background-color: #e74c3c;
+}
+.btn-sair:hover {
+    background-color: #c0392b !important;
+}
+
+.container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}       
+.card-interno {
+    background-color: #fff;
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+.card-interno form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card-interno form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 60%;
+}
+.card-interno form button {
+    background-color: #15803d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.item-lista {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+.lista-produtos{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.botoes-item{
+    display: flex;
+    width: 20px;
+    gap: 20px;
+}
+.botoes-item a {
+    text-decoration: none;
+    color: white;
+    background-color: #15803d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
 }

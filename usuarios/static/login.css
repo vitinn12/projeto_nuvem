@@ -113,3 +113,10 @@ button:hover {
     scale: 1.05;
     transition: 0.2s;
 }
+
+.mensagem {
+    color: #15803d; 
+    text-align: center; 
+    background-color: aliceblue;
+    padding: 10px;
+}

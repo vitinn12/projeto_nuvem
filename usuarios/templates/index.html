@@ -1,18 +1,83 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Pagina inicial</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
+
 <body>
-    <section>
-        <a href="{% url 'cadastro' %}">Cadastrar Usuário</a>
+    <header>
+        {% if request.session.access_token %}
+        {% if meu_id %}
+        <a href="{% url 'detalhar_usuario_api' meu_id %}">Meu Perfil</a>
+        {% else %}
+        {% endif %}
+        <a href="{% url 'logout' %}" class="btn-sair">Sair</a>
+        {% else %}
+        <a href="{% url 'cadastro' %}">Cadastrar</a>
         <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'listar_usuarios' %}">Listar Usuários</a>
-    </section>
+        {% endif %}
+    </header>
+
+    <session>
+        {% if request.session.access_token %}
+        <div class="container-cards">
+
+            <div class="card-interno">
+                <h2>Cadastrar Produto</h2>
+                <form method="POST" action="{% url 'cadastrar_produto' %}" class="form-index">
+                    {% csrf_token %}
+                    <div class="campo-index">
+                        <input type="text" name="nome" placeholder="Nome do Produto" required>
+                    </div>
+                    <div class="campo-index">
+                        <input type="text" name="preco"  placeholder="Preço" required>
+                    </div>
+                    <button type="submit" class="btn-add">Adicionar</button>
+                </form>
+            </div>
+
+            <div class="card-interno">
+                <h2>Produtos no Banco</h2>
+                <div class="lista-produtos">
+                    {% for p in produtos %}
+                    <div class="item-lista">
+                        <div class="dados-item">
+                            <strong>{{ p.nome }} - </strong>
+                            <span>R$ {{ p.preco }}</span>
+                        </div>
+                        <div class="botoes-item">
+                            <a href="{% url 'editar_produto' p.id %}">Editar</a>
+                            <a href="{% url 'excluir_produto' p.id %}">Excluir</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>Nenhum produto cadastrado.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="texto">
+            <h1>Bem-vindo ao Sistema</h1>
+            <p>Faça login para gerenciar seu perfil e produtos.</p>
+        </div>
+        {% endif %}
+    </session>
+
+    {% if login_sucesso %}
+    <script>
+        const dados = {{ token_json| safe }};
+        const blob = new Blob([JSON.stringify(dados, null, 4)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+    </script>
+    {% endif %}
 </body>
+
 </html>

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Usuário</title>
+    <link rel="stylesheet" href="{% static 'detalhes_usuario_api.css' %}">
+</head>
+
+<body>
+    <div class="card">
+        <h2>Dados do Usuário</h2>
+        <div class="info">
+            {% if messages %}
+            {% for message in messages %}
+            <div
+                style="padding: 20px; color: #15803d; font-weight: 600;">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %} 
+            {% if usuario %}
+            <div class="info"><strong>ID:</strong> {{ usuario.id }}</div>
+            <div class="info"><strong>Username:</strong> {{ usuario.username }}</div>
+            <div class="info"><strong>Email:</strong> {{ usuario.email }}</div>
+            {% else %}
+            <p>Erro ao carregar informações do usuário.</p>
+            {% endif %}
+            <br>
+
+        </div>
+
+        <div class="botoes">
+            <a href="{% url 'editar_usuario_api' usuario.id %}">Editar Dados</a>
+            <a href="{% url 'index' %}">Voltar para Início</a>
+        </div>
+    </div>
+</body>
+
+</html>

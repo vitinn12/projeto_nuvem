@@ -1,0 +1,87 @@
+body {
+    background-color: #15803d;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 500px;
+    /* Altura automática para caber os inputs */
+    min-height: 350px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.form-edicao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.campo label {
+    font-weight: bold;
+    color: #333;
+}
+
+.campo input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.botoes {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Botão de salvar (Submit) */
+.btn-salvar {
+    padding: 10px 20px;
+    background-color: #15803d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Botão de cancelar (Link) */
+.btn-cancelar {
+    padding: 10px 20px;
+    background-color: #6b7280; /* Cinza para diferenciar do salvar */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-salvar:hover {
+    background-color: #166534;
+}
