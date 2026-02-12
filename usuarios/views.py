@@ -124,19 +124,31 @@ def editar_usuario(request, id):
     url = f"https://usuarioapi-production.up.railway.app/api/usuarios/{id}/"
     headers = {"Authorization": f"Bearer {token}"}
     
+    usuario = {} 
+
     if request.method == "POST":
         payload = {
             "username": request.POST.get('username'),
             "email": request.POST.get('email'),
-            "first_name": request.POST.get('first_name'),
-            "last_name": request.POST.get('last_name')
+            "first_name": request.POST.get('first_name', ''),
+            "last_name": request.POST.get('last_name', '')
         }
         response = requests.put(url, json=payload, headers=headers)
+        
         if response.status_code == 200:
             request.session['user_email'] = payload['email']
             messages.success(request, "Perfil atualizado!")
             return redirect('detalhar_usuario', id=id)
-            
+        else:
+            messages.error(request, f"Erro ao atualizar: {response.status_code}")
+
+    try:
         response = requests.get(url, headers=headers)
-        usuario = response.json()
+        if response.status_code == 200:
+            usuario = response.json()
+        else:
+            messages.error(request, "Não foi possível carregar os dados do usuário.")
+    except Exception as e:
+        messages.error(request, f"Erro de conexão: {e}")
+
     return render(request, 'editar_usuario_api.html', {'usuario': usuario, 'id': id})
