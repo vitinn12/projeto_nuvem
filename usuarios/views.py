@@ -137,6 +137,6 @@ def editar_usuario(request, id):
             messages.success(request, "Perfil atualizado!")
             return redirect('detalhar_usuario', id=id)
             
-    response = requests.get(url, headers=headers)
-    usuario = response.json()
-    return render(request, 'editar_usuario_api.html', {'usuario': usuario})
+        response = requests.get(url, headers=headers)
+        usuario = response.json()
+    return render(request, 'editar_usuario_api.html', {'usuario': usuario, 'id': id})

@@ -22,6 +22,8 @@
             <div class="campo">
                 <label>Username:</label>
                 <input type="text" name="username" value="{{ usuario.username }}" required>
+                <input type="text" name="first_name" value="{{ usuario.first_name }}" required>
+                <input type="text" name="last_name" value="{{ usuario.last_name }}" required>
             </div>
 
             <div class="campo">
@@ -31,7 +33,7 @@
 
             <div class="botoes">
                 <button type="submit" class="btn-salvar">Salvar Alterações</button>
-                <a href="{% url 'detalhar_usuario' usuario.id %}" class="btn-cancelar">Cancelar</a>
+                <a href="{% url 'detalhar_usuario' id %}" class="btn-cancelar">Cancelar</a>
             </div>
         </form>
     </div>
